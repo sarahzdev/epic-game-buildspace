@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// NFT contract to inherit from.
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-// Helper functions OpenZeppelin provides.
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-import "hardhat/console.sol";
 import "./libraries/Base64.sol";
+
+import "hardhat/console.sol";
 
 contract MyEpicGame is ERC721 {
 
@@ -50,7 +49,8 @@ contract MyEpicGame is ERC721 {
       }));
 
       CharacterAttributes memory c = defaultCharacters[i];
-      console.log("Done initializing %s w/ HP %s, image %s", c.name, c.hp, c.imageURI); 
+
+      console.log("Done initializing %s w/ HP %s, image %s", c.name, c.hp, c.imageURI);
     }
 
     _tokenIds.increment();
@@ -66,7 +66,7 @@ contract MyEpicGame is ERC721 {
       name: defaultCharacters[_characterIndex].name,
       imageURI: defaultCharacters[_characterIndex].imageURI,
       hp: defaultCharacters[_characterIndex].hp,
-      maxHp: defaultCharacters[_characterIndex].maxHp,
+      maxHp: defaultCharacters[_characterIndex].hp,
       attackDamage: defaultCharacters[_characterIndex].attackDamage
     });
 
@@ -92,17 +92,17 @@ contract MyEpicGame is ERC721 {
             charAttributes.name,
             ' -- NFT #: ',
             Strings.toString(_tokenId),
-            '", "description: "This is an NFT that lets people play in the game Metaverse Slayer!", "image: "',
+            '", "description": "This is an NFT that lets people play in the game Metaverse Slayer!", "image": "',
             charAttributes.imageURI,
             '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ',
-            strAttackDamage, '} ]}'
+            strAttackDamage,'} ]}'
           )
         )
       )
     );
 
     string memory output = string(
-      abi.encodePacked("data:application/json;base64, ", json)
+      abi.encodePacked("data:application/json;base64,", json)
     );
 
     return output;

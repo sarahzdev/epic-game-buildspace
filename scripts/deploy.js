@@ -6,6 +6,10 @@ const characterImageURIs = [
 ];
 const characterHp = [200, 200, 300];
 const characterAttackDmg = [100, 25, 50];
+const bossName = "Voldemort";
+const bossImageURI = "https://i.imgur.com/9aLks1K.jpeg";
+const bossHP = 1000;
+const bossAttackDamage = 50;
 
 const main = async () => {
   const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
@@ -13,29 +17,14 @@ const main = async () => {
     characterNames,
     characterImageURIs,
     characterHp,
-    characterAttackDmg
+    characterAttackDmg,
+    bossName,
+    bossImageURI,
+    bossHP,
+    bossAttackDamage
   );
   await gameContract.deployed();
   console.log("Contract deployed to:", gameContract.address);
-
-  let txn;
-  txn = await gameContract.mintCharacterNFT(0);
-  await txn.wait();
-  console.log("Minted NFT #1");
-
-  txn = await gameContract.mintCharacterNFT(1);
-  await txn.wait();
-  console.log("Minted NFT #2");
-
-  txn = await gameContract.mintCharacterNFT(2);
-  await txn.wait();
-  console.log("Minted NFT #3");
-
-  txn = await gameContract.mintCharacterNFT(0);
-  await txn.wait();
-  console.log("Minted NFT #4");
-
-  console.log("Done deploying and minting!");
 };
 
 const runMain = async () => {

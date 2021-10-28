@@ -6,6 +6,10 @@ const characterImageURIs = [
 ];
 const characterHp = [200, 200, 300];
 const characterAttackDmg = [100, 25, 50];
+const bossName = "Voldemort";
+const bossImageURI = "https://i.imgur.com/9aLks1K.jpeg";
+const bossHP = 1000;
+const bossAttackDamage = 50;
 
 const main = async () => {
   const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
@@ -13,7 +17,11 @@ const main = async () => {
     characterNames,
     characterImageURIs,
     characterHp,
-    characterAttackDmg
+    characterAttackDmg,
+    bossName,
+    bossImageURI,
+    bossHP,
+    bossAttackDamage
   );
   await gameContract.deployed();
   console.log("Contract deployed to:", gameContract.address);
@@ -22,8 +30,11 @@ const main = async () => {
   txn = await gameContract.mintCharacterNFT(2);
   await txn.wait();
 
-  let returnedTokenUri = await gameContract.tokenURI(1);
-  console.log("Token URI:", returnedTokenUri);
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+
+  txn = await gameContract.attackBoss();
+  await txn.wait();
 };
 
 const runMain = async () => {

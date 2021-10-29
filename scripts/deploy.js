@@ -1,13 +1,13 @@
 const characterNames = ["Harry", "Ron", "Hermione"];
 const characterImageURIs = [
-  "https://i.imgur.com/zkI21GG.jpeg",
-  "https://i.imgur.com/f6eO8H7.jpeg",
-  "https://i.imgur.com/ktmsuS7.jpg",
+  "QmcuxCThamaT8Z1a2ems3XEfEfotBZia6JK7jSSY2zUrot",
+  "QmTzXoWkDARUvfmAwrfFzuPteP5A2o4h547LLDzXC34xrT",
+  "QmZckQ4eNK8JrqfBCxei2y4fpmuaTipEkZup8edAd628og",
 ];
-const characterHp = [200, 200, 300];
-const characterAttackDmg = [100, 25, 50];
+const characterHp = [600, 600, 800];
+const characterAttackDmg = [100, 50, 50];
 const bossName = "Voldemort";
-const bossImageURI = "https://i.imgur.com/9aLks1K.jpeg";
+const bossImageURI = "QmdgDWr4LgpfuBHBq6M46h54jV6en8KdP5KCmb3ak3WXCW";
 const bossHP = 1000;
 const bossAttackDamage = 50;
 
